@@ -89,7 +89,7 @@ public:
    * matrix
    * @param delta_t Time between k and k+1 in s
    */
-  void Prediction(double delta_t);
+  void Prediction(double dt);
 
   /**
    * Updates the state and the state covariance matrix using a laser measurement
@@ -102,6 +102,13 @@ public:
    * @param meas_package The measurement at k+1
    */
   void UpdateRadar(MeasurementPackage meas_package);
+
+private:
+
+  MatrixXd GenerateSigmaPoints();
+  MatrixXd GenerateAugmentedSigmaPoints();
+  void SigmaPointPrediction(const MatrixXd& Xsig_aug, const double& dt);
+  void PredictMeanAndCovariance(VectorXd& x_out, MatrixXd& P_out);
 };
 
 #endif /* UKF_H */
