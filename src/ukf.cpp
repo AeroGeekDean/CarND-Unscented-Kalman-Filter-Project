@@ -98,6 +98,7 @@ void UKF::ProcessMeasurement(MeasurementPackage meas_package) {
  * measurement and this one.
  */
 void UKF::Prediction(double dt) {
+//  cout << "UKF::Prediction" << endl;
   SigmaPointPrediction(GenerateAugmentedSigmaPoints(), dt);
   PredictMeanAndCovariance(x_, P_);
 }
@@ -107,6 +108,7 @@ void UKF::Prediction(double dt) {
  * @param {MeasurementPackage} meas_package
  */
 void UKF::UpdateLidar(MeasurementPackage meas_package) {
+//  cout << "UKF::UpdateLidar" << endl;
 
   int n_z = 2;  //set measurement dimension: px, py for laser
 
@@ -183,6 +185,7 @@ void UKF::UpdateLidar(MeasurementPackage meas_package) {
  * @param {MeasurementPackage} meas_package
  */
 void UKF::UpdateRadar(MeasurementPackage meas_package) {
+//  cout << "UKF::UpdateRadar" << endl;
 
   int n_z = 3;  //set measurement dimension: r, phi, & r_dot for radar
 
