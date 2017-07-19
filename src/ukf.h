@@ -67,6 +67,11 @@ public:
   ///* Sigma point spreading parameter
   double lambda_;
 
+  ///* NIS for laser
+  float nis_laser_;
+
+  ///* NIS for radar
+  float nis_radar_;
 
   /**
    * Constructor
@@ -94,14 +99,16 @@ public:
   /**
    * Updates the state and the state covariance matrix using a laser measurement
    * @param meas_package The measurement at k+1
+   * @return nis The Normalized Innovation Squared
    */
-  void UpdateLidar(MeasurementPackage meas_package);
+  float UpdateLidar(MeasurementPackage meas_package);
 
   /**
    * Updates the state and the state covariance matrix using a radar measurement
    * @param meas_package The measurement at k+1
+   * @return nis The Normalized Innovation Squared
    */
-  void UpdateRadar(MeasurementPackage meas_package);
+  float UpdateRadar(MeasurementPackage meas_package);
 
 private:
 
